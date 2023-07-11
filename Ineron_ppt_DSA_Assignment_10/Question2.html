@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lastRemaining(n) {
+  return lastRemainingHelper(n, true);
+}
+
+function lastRemainingHelper(n, isLeftToRight) {
+  if (n === 1) {
+    return 1;
+  }
+
+  if (isLeftToRight) {
+    return 2 * lastRemainingHelper(Math.floor(n / 2), false);
+  } else {
+    if (n % 2 === 0) {
+      return 2 * lastRemainingHelper(Math.floor(n / 2), true) - 1;
+    } else {
+      return 2 * lastRemainingHelper(Math.floor(n / 2), true);
+    }
+  }
+}
+
+
+console.log(lastRemaining(9));
+
+    </script>
+</body>
+</html>

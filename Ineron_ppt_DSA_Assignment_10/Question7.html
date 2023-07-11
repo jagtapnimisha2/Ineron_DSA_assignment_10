@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printPermutations(str) {
+  const result = [];
+  backtrack(str, '', result);
+  return result;
+}
+
+function backtrack(str, currentPerm, result) {
+  if (str === '') {
+    result.push(currentPerm);
+    return;
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    const remaining = str.slice(0, i) + str.slice(i + 1);
+    backtrack(remaining, currentPerm + char, result);
+  }
+}
+
+// Example usage
+console.log(printPermutations('cd'));   // ['cd', 'dc']
+console.log(printPermutations('abb'));  // ['abb', 'bab', 'bba', 'abb', 'bab', 'bba']
+
+    </script>
+</body>
+</html>

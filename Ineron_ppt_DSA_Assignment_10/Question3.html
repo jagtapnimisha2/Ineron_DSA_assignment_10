@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printSubsets(set) {
+  const subsets = [];
+  backtrack(set, '', 0, subsets);
+  return subsets;
+}
+
+function backtrack(set, currentSubset, index, subsets) {
+  if (index === set.length) {
+    subsets.push(currentSubset);
+    return;
+  }
+  backtrack(set, currentSubset, index + 1, subsets);
+  backtrack(set, currentSubset + set[index], index + 1, subsets);
+}
+console.log(printSubsets("abc"));
+console.log(printSubsets("abcd"));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function countConsonants(str) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  return countConsonantsHelper(str.toLowerCase(), vowels);
+}
+
+function countConsonantsHelper(str, vowels) {
+  if (str === '') {
+    return 0;
+  }
+
+  const firstChar = str[0];
+
+  if (isConsonant(firstChar, vowels)) {
+    return 1 + countConsonantsHelper(str.slice(1), vowels);
+  } else {
+    return countConsonantsHelper(str.slice(1), vowels);
+  }
+}
+
+function isConsonant(char, vowels) {
+  if (char.match(/[a-z]/) && !vowels.includes(char)) {
+    return true;
+  }
+  return false;
+}
+
+// Example usage
+console.log(countConsonants('abc de'));
+console.log(countConsonants('geeksforgeeks portal'));
+  
+    </script>
+</body>
+</html>
